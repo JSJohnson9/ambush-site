@@ -63,15 +63,17 @@ async function submitForm(endpoint: string, payload: Record<string, string>) {
 
 function Logo() {
   return (
-    <div className="flex items-center gap-3">
-      <div className="rounded-2xl bg-red-600 p-3 shadow-lg shadow-red-950/40">
-        <ShieldCheck className="text-white" />
-      </div>
-      <div>
+    <div className="flex items-center gap-4">
+      <img
+        src="/logo.png"
+        alt="Ambush Baseball Logo"
+        className="h-16 w-auto object-contain drop-shadow-lg"
+      />
+      <div className="leading-tight">
         <div className="text-xs uppercase tracking-[0.25em] text-red-300 font-bold">
           Ambush
         </div>
-        <div className="text-lg font-black uppercase">Youth Sports</div>
+        <div className="text-lg font-black uppercase">Baseball</div>
       </div>
     </div>
   );
