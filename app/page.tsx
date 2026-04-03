@@ -24,7 +24,7 @@ const roster = [
   { name: "Lawson Blevins", number: 13, pos: "P", bio: "Feisty leadoff hitter.", image: "/players/lawson.jpg" },
   { name: "Braxton Blocker", number: 15, pos: "CF", bio: "Athletic outfielder with range.", image: "/players/braxton.jpg" },
   { name: "Fletcher Wagoner", number: 5, pos: "C", bio: "Leader behind the plate.", image: "/players/fletcher.jpg" },
-  { name: "Logan Tackett", number: 9, pos: "SS", bio: "Reliable with a big bt.", image: "/players/logan.jpg" },
+  { name: "Logan Tackett", number: 9, pos: "SS", bio: "Reliable with a big bat.", image: "/players/logan.jpg" },
   { name: "Emmett Bailey", number: 17, pos: "2B", bio: "Quick middle infielder.", image: "/players/emmett.jpg" },
   { name: "Brady Conn", number: 1, pos: "3B", bio: "Hard-nosed competitor.", image: "/players/brady.jpg" },
   { name: "Eli Lily", number: 10, pos: "1B", bio: "Mr. Reliable, can play anywhere.", image: "/players/eli.jpg" },
