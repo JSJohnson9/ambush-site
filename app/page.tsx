@@ -21,21 +21,21 @@ const CONFIG = {
 };
 
 const roster = [
-  { name: "Lawson Blevins", number: 13, pos: "P", bio: "Strong presence on the mound." },
-  { name: "Braxton Blocker", number: 15, pos: "CF", bio: "Athletic outfielder with range." },
-  { name: "Fletcher Wagoner", number: 5, pos: "C", bio: "Leader behind the plate." },
-  { name: "Logan Tackett", number: 9, pos: "SS", bio: "Reliable shortstop." },
-  { name: "Emmett Bailey", number: 17, pos: "2B", bio: "Quick middle infielder." },
-  { name: "Brady Conn", number: 1, pos: "3B", bio: "Hard-nosed competitor." },
-  { name: "Eli Lily", number: 10, pos: "1B", bio: "Reliable first baseman." },
-  { name: "Grayson Blevins", number: 31, pos: "LF", bio: "Effort-driven player." },
-  { name: "Emmerson Hobbs", number: 44, pos: "RF", bio: "Consistent performer." },
-  { name: "Brooklyn Miller", number: 22, pos: "UTIL", bio: "Versatile athlete." },
+  { name: "Lawson Blevins", number: 13, pos: "P", bio: "Feisty leadoff hitter.", image: "/players/lawson.jpg" },
+  { name: "Braxton Blocker", number: 15, pos: "CF", bio: "Athletic outfielder with range.", image: "/players/braxton.jpg" },
+  { name: "Fletcher Wagoner", number: 5, pos: "C", bio: "Leader behind the plate.", image: "/players/fletcher.jpg" },
+  { name: "Logan Tackett", number: 9, pos: "SS", bio: "Reliable with a big bt.", image: "/players/logan.jpg" },
+  { name: "Emmett Bailey", number: 17, pos: "2B", bio: "Quick middle infielder.", image: "/players/emmett.jpg" },
+  { name: "Brady Conn", number: 1, pos: "3B", bio: "Hard-nosed competitor.", image: "/players/brady.jpg" },
+  { name: "Eli Lily", number: 10, pos: "1B", bio: "Mr. Reliable, can play anywhere.", image: "/players/eli.jpg" },
+  { name: "Grayson Blevins", number: 31, pos: "LF", bio: "Effort-driven player.", image: "/players/grayson.jpg" },
+  { name: "Emmerson Hobbs", number: 44, pos: "RF", bio: "Always ready to do what's best for the team.", image: "/players/emmerson.jpg" },
+  { name: "Brooklyn Miller", number: 22, pos: "UTIL", bio: "Very quick learner.", image: "/players/brooklyn.jpg" },
 ];
 
 const tryoutInfo = {
   team: "Ambush Baseball 10U",
-  date: "April 4, 2026",
+  date: "April 18, 2026",
   time: "5:00 PM",
   location: "Stonecrest Baseball Fields",
   phone: "(606) 615-7516",
@@ -67,10 +67,10 @@ function Logo() {
       <img
         src="/logo.png"
         alt="Ambush Baseball Logo"
-        className="h-16 w-auto object-contain drop-shadow-lg"
+        className="h-16 w-auto object-contain"
       />
       <div className="leading-tight">
-        <div className="text-xs uppercase tracking-[0.25em] text-red-300 font-bold">
+        <div className="text-xs font-bold uppercase tracking-[0.25em] text-red-300">
           Ambush
         </div>
         <div className="text-lg font-black uppercase">Baseball</div>
@@ -100,18 +100,48 @@ function NavButton({
   );
 }
 
-function Photo({ number }: { number: number }) {
+function Photo({
+  number,
+  src,
+  alt,
+  variant = "card",
+}: {
+  number: number;
+  src?: string;
+  alt?: string;
+  variant?: "card" | "profile";
+}) {
+  const wrapperStyle =
+    variant === "profile"
+      ? "h-60 w-full bg-slate-950 flex items-center justify-center"
+      : "h-44 w-full bg-slate-900";
+
+  const imageStyle =
+    variant === "profile"
+      ? "max-h-full max-w-full object-contain"
+      : "h-full w-full object-cover";
+
   return (
-    <div className="flex h-44 items-center justify-center bg-slate-900 border-b border-white/10">
-      <div className="text-center">
-        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-white/5">
-          <Camera className="text-slate-500" />
+    <div className={`${wrapperStyle} border-b border-white/10 overflow-hidden`}>
+      {src ? (
+        <img
+          src={src}
+          alt={alt || `Player ${number}`}
+          className={imageStyle}
+        />
+      ) : (
+        <div className="flex h-full items-center justify-center">
+          <div className="text-center">
+            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-white/5">
+              <Camera className="text-slate-500" />
+            </div>
+            <div className="mt-3 text-xs font-bold uppercase tracking-[0.25em] text-slate-400">
+              Player Photo
+            </div>
+            <div className="mt-1 text-sm font-bold text-white">#{number}</div>
+          </div>
         </div>
-        <div className="mt-3 text-xs font-bold uppercase tracking-[0.25em] text-slate-400">
-          Player Photo
-        </div>
-        <div className="mt-1 text-sm font-bold text-white">#{number}</div>
-      </div>
+      )}
     </div>
   );
 }
@@ -239,7 +269,7 @@ function RosterPage() {
             key={p.name}
             className="overflow-hidden rounded-2xl border border-white/10 bg-white/5"
           >
-            <Photo number={p.number} />
+            <Photo number={p.number} src={p.image} alt={p.name} />
             <div className="p-4">
               <div className="font-bold text-white">{p.name}</div>
               <div className="mt-1 text-xs uppercase tracking-[0.25em] text-red-300">
@@ -491,7 +521,12 @@ function ProfilesPage() {
         </div>
 
         <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/5">
-          <Photo number={player.number} />
+          <Photo
+  number={player.number}
+  src={player.image}
+  alt={player.name}
+  variant="profile"
+/>
           <div className="p-6">
             <h3 className="text-3xl font-black uppercase">{player.name}</h3>
             <div className="mt-3 rounded-xl bg-red-600/20 px-3 py-2 inline-block text-xs font-bold uppercase tracking-[0.25em] text-red-200">
