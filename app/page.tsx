@@ -29,7 +29,7 @@ const roster = [
   { name: "Brady Conn", number: 1, pos: "3B", bio: "Hard-nosed competitor.", image: "/players/brady.jpg" },
   { name: "Eli Lily", number: 10, pos: "1B", bio: "Mr. Reliable, can play anywhere.", image: "/players/eli.jpg" },
   { name: "Grayson Blevins", number: 31, pos: "LF", bio: "Effort-driven player.", image: "/players/grayson.jpg" },
-  { name: "Emmerson Hobbs", number: 44, pos: "RF", bio: "Always ready to do what's best for the team.", image: "/players/emmerson.jpg" },
+  { name: "Emerson Hobbs", number: 44, pos: "RF", bio: "Always ready to do what's best for the team.", image: "/players/emerson.jpg" },
   { name: "Brooklyn Miller", number: 22, pos: "UTIL", bio: "Very quick learner.", image: "/players/brooklyn.jpg" },
 ];
 
